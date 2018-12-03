@@ -1,0 +1,190 @@
+{{!-- <div class="entire">
+    <div class="content">
+
+<H1>{{{userauth.profile.firstname}}} {{{userauth.profile.lastname}}} </H1>
+
+{{#if userauth.dailycalorie}}
+<h2>Daily Calories: {{{userauth.dailycalorie}}}</h2>
+
+{{/if}}
+
+{{#if userauth.remainingcalorie}}
+<h2>Remaining today: {{{userauth.remainingcalorie}}}</h2>
+<div class="bar">
+    <div class="cont">
+      <div class="innerbar" style="width: {{consumed}}%">
+          
+      </div>
+      </div>
+</div>
+{{/if}}
+ --}}
+
+
+{{!-- {{#if message}}
+<h3>{{{message}}}</h3>
+{{/if} --}}
+
+
+<div class="entire">
+    <div class="content">
+
+<H1>{{{userauth.profile.firstname}}} {{{userauth.profile.lastname}}} </H1>
+
+{{#if userauth.dailycalorie}}
+<h2>Daily Calories: {{{userauth.dailycalorie}}}</h2>
+
+{{/if}}
+{{#if userauth.flag}}
+<h2>You have reached your daily target!!!</h2>
+
+{{/if}}
+
+{{#if userauth.negflag}}
+<h2>Exceeded daily limit by: {{{userauth.exceededcalorie}}}</h2>
+<div class="bar">
+    <div class="cont">
+      <div class="innerbars" style="width: {{consumed}}%">
+          
+      </div>
+      </div>
+</div>
+
+{{/if}}
+
+{{#if userauth.remflag}}
+<h2>Remaining today: {{{userauth.remainingcalorie}}}</h2>
+<div class="bar">
+    <div class="cont">
+      <div class="innerbar" style="width: {{consumed}}%">
+          
+      </div>
+      </div>
+</div>
+{{/if}}
+
+
+{{#if userauth.dailycalorie}}
+<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-primary">Add Custom Meal</button>
+
+<div id="id01" class="modal">
+ <form class="modal-content animate" method="post" action="/addmeal" onsubmit="return confirm('Are you sure?');">
+ <div class="container">
+     <label class="itemcont" for="item">Item</label>
+     <input type="text" class="form-control" placeholder="item" name="item" id="item" >
+     <label  class="numbercont" for="calorie">Calorie</label>
+     <input type="number"  class="form-control" placeholder="calorie" name="calorie" id="calorie">
+     <label  class="quantitycont" for="quantity">Quantity</label>
+     <input type="number"  class="form-control" placeholder="quantity" name="quantity" id="quantity">
+     <button type="submit" class="btn btn-success">Submit</button>
+ </div>
+ <div class="container">
+     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger ">Cancel</button>
+ </div>
+ </form>   
+</div>  
+
+<button onclick="document.getElementById('id02').style.display='block'" class="btn btn-primary">Preadded Meal</button>
+
+<div id="id02" class="modal">
+    
+ <form class="modal-content animate" method="post" action="/preadded" onsubmit="return confirm('Are you sure?');">
+ <div class="container">
+ <label for="state" class="itemcont">Category: </label>
+           <select id ="state" class="custom-select" name = "state" onchange="selectCity('state','city')">
+                <option value=""> Select Category</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="breadsandcereals">Breads and Cereals</option>
+                <option value="meatsandfish">Meats and Fish</option>
+                <option value="milkanddairy">Milk and Dairy</option>
+                <option value="fatsandsugars">Fats and Sugars</option>
+
+            </select>
+      
+
+            <label for="city" class="itemcont">Item: </label>
+            <select id="city" class="custom-select" name="city">
+                <option value=""> Select Item</option>
+            </select>
+
+            
+           
+
+
+
+     <label class = "quantitycont" for= "quantity">Quantity:</label>
+    <input id="quantity" class="inputbox" type="number" name="quantity" class="form-control" placeholder="Enter input here"><br> 
+
+            <button type="submit"  onclick="gohere()"  class="btn btn-success"> Add </button>
+            </div>
+ <div class="container">
+     <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger">Cancel</button>
+ </div>
+ </form>   
+</div>
+
+<button onclick="document.getElementById('id03').style.display='block'" class="btn btn-primary">Add Previous Meal</button>
+
+<div id="id03" class="modal">
+ <form class="modal-content animate" method="post" action="/addprevious" onsubmit="return confirm('Are you sure?');">
+ <div class="container">
+
+     <label for="prevmeal" class="itemcont">Prevmeal: </label>
+            <select id= "prevmeal" class="custom-select" name="prevmeal">
+                {{#each userauth.custommeal}}
+                  <option value="{{this.item}}">{{this.item}}</option>
+                  {{/each}}
+            </select>
+
+     
+     <label for="quantity" class="quantitycont">Quantity</label>
+     <input type="number" class="form-control" placeholder="quantity" name="quantity" id="quantity">
+     <br>
+     <button type="submit"  class="btn btn-success">Submit</button>
+     
+ </div>
+ <div class="container">
+     <button type="button" onclick="document.getElementById('id03').style.display='none'" class="btn btn-danger">Cancel</button>
+ </div>
+ </form>   
+</div>{{/if}} <br> <br><a href="/profile"><button type="button" class="btn btn-primary">Profile</button></a>
+<a href="/logout"><button type="button" class="btn btn-danger">Logout</button></a>
+
+
+
+<br>
+</div>
+<br>
+<hr>
+
+<h2>Meals had today</h2>
+    <table class="table">
+        <tr>
+            <th scope="col">Food Item</th>
+            <th scope="col">Calories</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Image</th>
+        </tr>
+    
+       {{#each userauth.today}}
+    <tr>
+        <td>{{this.item}}</td>
+        <td>{{this.calorie}}</td>
+        <td>{{this.quantity}}</td>
+        <td>
+            {{#if this.image}}
+              <img src="{{this.image}}" height="100" width="100" alt="{{this.image}}">
+            {{/if}}
+        </td>
+        {{!-- <td><form method="POST" action="/delete">
+                <button class="btn btn-danger" name="product" value="{{this.item}} {{this.quantity}}">Delete</button>
+        </form> </td> --}}
+    </tr>
+        
+        {{else}}
+        <h2>No items yet</h2>
+    {{/each}}
+    </table>
+   
+</div>

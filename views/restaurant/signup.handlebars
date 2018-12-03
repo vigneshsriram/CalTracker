@@ -1,0 +1,45 @@
+{{!-- <div class="header">
+
+   
+        
+            <a href="/restaurantfilter" class="logo"><img alt="logo" src="/public/pics/logo1.png" class="logo1"></a>
+
+
+
+    <div class="hc">
+<h1>Sign Up Page</h1>
+</div> --}}
+        
+ 
+</div>
+
+  
+    <form method="post" id="login-form" action="/login" class="signup">
+        <label class = "enter" for= "fname">First Name:</label>
+        <input id="fname" class="form-control" type="text" name="fname" placeholder="Enter input here" required><br>
+        <label class = "enter" for= "lname">Last Name:</label>
+        <input id="lname" class="form-control" type="text" name="lname" placeholder="Enter input here" required><br>
+        <label class = "enter" for= "username">Username:</label>
+        <input id="username" class="form-control" type="text" name="username" placeholder="Enter input here" required><br>
+        <label class = "enter" for= "email">Email:</label>
+        <input id="email" class="form-control" type="text" name="email" placeholder="Enter input here" required><br>
+
+        <label class = "enter" for = "password">Password:</label>
+        <input id = "password" type="password" class= "form-control" placeholder="Enter Password" name="password" required><br>
+        <button id="subButton" class="btn btn-success" type="submit">Submit</button>
+
+        <p class="messagesu">{{{message}}}</p>
+    </form>
+
+    {{!-- <div class="form-group hidden" id="error-container">
+        <div class="alert alert-danger text-goes-here"></div>
+        
+    </div>
+
+    <div class="form-group hidden" id="result-container">
+        <div class="alert alert-success text-goes-here"></div>
+    </div> --}}
+
+    <p class="error">{{{err}}}</p>
+
+

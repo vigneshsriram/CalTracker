@@ -1,0 +1,63 @@
+{{!-- <div class="header">
+
+   
+        
+            <a href="/restaurantfilter" class="logo"><img alt="logo" src="/public/pics/logo1.png" class="logo1"></a>
+
+        
+   <div class="dropdown">
+  <button class="dropbtn" >{{{userauth.profile.firstname}}}</button>
+  <div class="dropdown-content">
+    <a href="/changepassword">Change Password</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+    </div>
+
+
+
+    <a class="home" href="/restaurantfilter"><img alt="logo" src="/public/pics/home.png" class="home1"></a>
+
+    <div class="hc">
+<h1>Treat Yo'Self</h1>
+</div>
+         --}}
+ 
+
+
+
+</div>
+
+            <form method="post"  id="filterform" action="/preadded" class="containerfilter">
+         
+            <label for="state" class="tag">Category: </label>
+            <select id = "state" class="dropdown1" name = "state" onchange="selectCity('state','city')">
+                <option value=""> Select Category</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="prevmeal">Previous Meals</option>
+
+            </select>
+      
+
+            <label for="city" class="tag">Item: </label>
+            <select id= "city" class="dropdown1" name="city">
+                <option value=""> Select Item</option>
+            </select>
+
+
+             <br>
+            
+           
+
+
+
+     <label class = "enter" for= "quantity">Quantity:</label>
+    <input id="quantity" class="inputbox" type="number" name="quantity" placeholder="Enter input here"><br> 
+
+            
+            <br><br>
+            <button class="goButton" onclick="gohere()"> Add </button>
+        </form>
+        
+        <p class="filterror">{{{message}}}</p>

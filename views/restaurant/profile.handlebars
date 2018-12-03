@@ -1,0 +1,83 @@
+
+{{!-- 
+<div class="header">
+
+   
+        
+            <a href="/restaurantfilter" class="logo"><img alt="logo" src="/public/pics/logo1.png" class="logo1"></a>
+
+        
+   <div class="dropdown">
+  <button class="dropbtn" >{{{userauth.profile.firstname}}}</button>
+  <div class="dropdown-content">
+    <a href="/changepassword">Change Password</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+    </div>
+   
+    <a class="home" href="/restaurantfilter"><img alt="logo" src="/public/pics/home.png" class="home1"></a>
+
+    <div class="hc">
+<h1>Treat Yo'Self</h1>
+</div>
+         --}}
+
+
+</div class="rest_list">
+        <form method="post" id="login-form" action="/profile" class="signup">
+        <label class = "enter" for= "age">Age :</label>
+        <input id="age" class="form-control" type="text" name="age" placeholder="Enter input here" ><br>
+
+   {{!-- class is dropdown1 --}}
+         <label class = "enter" for= "gender">Gender :</label>
+        <select id="gender"name= "gender" class="custom-select">
+        <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+        </select>
+     <br><br><br>
+        <label class = "enter" for= "weight">Weight(Pounds) :</label>
+        <input id="weight" class="form-control" type="text" name="weight" placeholder="Enter input here" ><br>
+
+
+        <label class = "enter" for= "height">Height(inches):</label>
+        <input id="height" class="form-control" type="text" name="height" placeholder="Enter input here" ><br>
+        <label class = "enter" for= "activuty">Activity :</label>
+        <select id="activity" name= "activity" class="custom-select">
+        <option value="">How active are you?</option>
+                <option value="high">Highly Active</option>
+                <option value="moderate">Moderately Active</option>
+                <option value="low"> No activity</option>
+        </select><br><br>
+
+        <label class = "enter" for= "targetWeight">Target Weight :</label>
+        <input id="targetWeight" class="form-control" type="text" name="targetWeight" placeholder="Enter input here" ><br>
+
+      <button id="subButton" class="btn btn-success" type="submit">Submit</button>
+      </form>
+
+{{!-- {{commented expressions}} 
+<div id="list">
+
+
+<div class="listbody">
+  
+     {{#each rests}}  
+    <article class="post">
+
+      <h2><a class="restname" href="/restaurant/{{_id}}">{{name}} </a></h2><div class="rating">{{obj.rating}}</div>
+      <p>Description:{{{obj.description}}}</p>
+          Cuisine: {{#each obj.cuisine}}
+                {{this}}
+            {{/each}}    
+                <p>{{obj.state}} , {{obj.city}}</p>
+  
+  
+      
+    </article>
+  {{/each}}
+</div>
+--}}
+
+</div>
